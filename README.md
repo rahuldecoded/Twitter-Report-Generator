@@ -21,9 +21,5 @@ consumer_secret = 'your consumer secret'
 access_token = 'access token'
 access_token_secret = 'access token secret'
 ```
-6. Change the keyword according to your choice.
-```
-myStream.filter(track=['enter your keyword'])
-```
-7. Run the application. `python run.py`
+6. Run the application. `python run.py`
 
