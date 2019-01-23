@@ -1,11 +1,14 @@
 import tweepy
+
 import json
+import sys
 
 consumer_key = 'your consumer key'
 consumer_secret = 'your consumer secret'
 
 access_token = 'access token'
 access_token_secret = 'access token secret'
+
 
 # initialize the client
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -99,8 +102,8 @@ class MyStreamListener(tweepy.StreamListener):
 
             elif minute not in usersDetails:
                 print('\n*******\n')
-                print(minute, end=" - ")
-                print(len(usersDetails))
+                # print(minute, end=" - ")
+                # print(len(usersDetails))
                 print('*****User Report*****')
                 
                 
@@ -208,6 +211,10 @@ myStreamListener = MyStreamListener()
 
 myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
 
-keyword = input("Enter the keyword")
-myStream.filter(track=[keyword])
+keyword = input("Enter the keyword: ")
 
+try:
+    myStream.filter(track=[keyword])
+except KeyboardInterrupt:
+    print('Interrupted')
+    sys.exit(0)
